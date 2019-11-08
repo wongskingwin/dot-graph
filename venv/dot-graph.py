@@ -14,13 +14,14 @@ def reflect_points_on_horizontal_axis(x_values, y_values, reflection_y_intercept
 def plot_points():
 
     # Initialize starting x/y values
-    base_x_values = [1, 4, 9, 16, 25, -10]
-    base_y_values = [1, 0, 3, 4, 5, -20]
+    base_x_values = [2,0,0,1,3,6,9,12,15,4,7,11,14,16,1,3,4,6,8,8,8,11,11,11,13,13,15,15,17,17,15]
+    base_y_values = [13,11,10,9,9,9,11,12,14,11,12,13,14,14,4,7,4,7,4,7,8,7,3,5,6,4,7,4,4,6,6]
     base_graph_label = "base graph"
     base_graph_color = "black"
 
     # Get reflected values
-    (reflected_x_values, reflected_y_values) = reflect_points_on_horizontal_axis(base_x_values, base_y_values, 2)
+    reflect_on_y_intercept = 1
+    (reflected_x_values, reflected_y_values) = reflect_points_on_horizontal_axis(base_x_values, base_y_values, reflect_on_y_intercept)
     reflected_graph_name = "reflected graph"
     reflected_graph_color = "orange"
 
