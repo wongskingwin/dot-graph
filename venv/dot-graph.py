@@ -9,6 +9,18 @@ def label_data_points(x_values, y_values, ax, base_point_labels):
         ax.annotate('{}({},{})'.format(base_point_labels[i], xy[0], xy[1]), xy=xy, textcoords='data')
         i += 1
 
+# Generate points rotated 90 degrees clockwise
+def rotate_points_ninety_counterclockwise(x_values, y_values):
+    i = 0
+    number_of_starting_values = len(x_values)
+    rotated_x_values = []
+    rotated_y_values = []
+    while i < number_of_starting_values:
+        rotated_x_values.append(-1 * y_values[i])
+        rotated_y_values.append(x_values[i])
+        i+=1
+    return(rotated_x_values, rotated_y_values)
+
 # Generate reflection points on a horizontal axis
 def reflect_points_on_horizontal_axis(x_values, y_values, reflection_y_intercept):
     i = 0
@@ -27,9 +39,9 @@ def plot_points():
     #   3. Add a call to label_data_points function, passing in your new x/y arrays
 
     # Set base x/y values
-    base_x_values = [2,0,0,1,3,6,9,12,15,4,7,11,14,16,1,3,4,6,8,8,8,11,11,11,13,13,15,15,17,17,15]
-    base_y_values = [13,11,10,9,9,9,11,12,14,11,12,13,14,14,4,7,4,7,4,7,8,7,3,5,6,4,7,4,4,6,6]
-    base_point_labels = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AA","AB","AC","AD","AE"]
+    base_x_values = [2,0,0,1,3,6,9,12,15,4,7,11,14,16,1,3,4,6,8,8,8,11,11,11,13,13,15,15,17,17,15,17]
+    base_y_values = [13,11,10,9,9,9,11,12,14,11,12,13,14,15,4,7,4,7,4,7,8,7,3,5,6,4,7,4,4,6,6,7]
+    base_point_labels = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","AA","AB","AC","AD","AE", "AF"]
     base_graph_label = "base graph"
     base_graph_color = "black"
 
@@ -39,15 +51,22 @@ def plot_points():
     reflected_graph_label = "reflected graph"
     reflected_graph_color = "orange"
 
+    # Get rotated x/y values (rotate 90 degrees clockwise)
+    rotated_x_values, rotated_y_values = rotate_points_ninety_counterclockwise(base_x_values, base_y_values)
+    rotated_graph_label = "rotated graph"
+    rotated_graph_color = "green"
+
     # Generate scatter graphs based on above x/y numbers
     fig, ax = plt.subplots(1, 1, sharex='all', sharey='all')
     ax.scatter(base_x_values, base_y_values, color = base_graph_color, label = base_graph_label)
     ax.scatter(reflected_x_values, reflected_y_values, color = reflected_graph_color,  label = reflected_graph_label)
+    ax.scatter(rotated_x_values, rotated_y_values, color = rotated_graph_color, label = rotated_graph_label)
 
     # Label data points
     # Note base point labels are used for all points
     label_data_points(base_x_values, base_y_values, ax, base_point_labels)
     label_data_points(reflected_x_values, reflected_y_values, ax, base_point_labels)
+    label_data_points(rotated_x_values, rotated_y_values, ax, base_point_labels)
 
     # Set graph title
     ax.set_title("Dot Graph")
