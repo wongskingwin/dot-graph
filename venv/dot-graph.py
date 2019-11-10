@@ -9,7 +9,7 @@ def label_data_points(x_values, y_values, ax, base_point_labels):
         ax.annotate('{}({},{})'.format(base_point_labels[i], xy[0], xy[1]), xy=xy, textcoords='data')
         i += 1
 
-# Generate points rotated 90 degrees clockwise
+# Generate points rotated 90 degrees counterclockwise
 def rotate_points_ninety_counterclockwise(x_values, y_values):
     i = 0
     number_of_starting_values = len(x_values)
@@ -51,7 +51,7 @@ def plot_points():
     reflected_graph_label = "reflected graph"
     reflected_graph_color = "orange"
 
-    # Get rotated x/y values (rotate 90 degrees clockwise)
+    # Get rotated x/y values (rotate 90 degrees counterclockwise)
     rotated_x_values, rotated_y_values = rotate_points_ninety_counterclockwise(base_x_values, base_y_values)
     rotated_graph_label = "rotated graph"
     rotated_graph_color = "green"
